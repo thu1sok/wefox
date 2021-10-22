@@ -1,0 +1,29 @@
+@import 'variables';    
+
+@each $prop, $abbrev in (padding: p, margin: m) {
+    @each $size, $length in $spacers {
+      .#{$abbrev}-#{$size} {
+        #{$prop}: $length !important;
+      }
+  
+      .#{$abbrev}-#{$size}--t,
+      .#{$abbrev}-#{$size}--v {
+        #{$prop}-top: $length !important;
+      }
+  
+      .#{$abbrev}-#{$size}--r,
+      .#{$abbrev}-#{$size}--h {
+        #{$prop}-right: $length !important;
+      }
+  
+      .#{$abbrev}-#{$size}--b,
+      .#{$abbrev}-#{$size}--v {
+        #{$prop}-bottom: $length !important;
+      }
+  
+      .#{$abbrev}-#{$size}--l,
+      .#{$abbrev}-#{$size}--h {
+        #{$prop}-left: $length !important;
+      }
+    }
+}

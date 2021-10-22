@@ -1,0 +1,40 @@
+@import '~@angular/material/theming';
+
+$material-primary: mat-palette($mat-red, 800);
+$material-accent: mat-palette($mat-grey, 900);
+$material-warn: mat-palette($mat-red);
+$material-grey: mat-palette($mat-grey, 400);
+
+$color-primary: mat-color($mat-red, 800);
+$color-secondary: mat-color($mat-grey, 900);
+$color-success: #24c722;
+$color-black: #111;
+$color-white: #fefefe;
+
+
+//SPACERS
+$spacer: 8px !default;
+$spacers: () !default;
+
+$spacers: map-merge(
+  (
+    'no': 0,
+    'sm': ($spacer * .5),
+    'md': ($spacer),
+    'lg': ($spacer * 2),
+    'xl': ($spacer * 3),
+    'xxl': ($spacer * 4),
+    'xxxl': ($spacer * 5),
+    '10xl': ($spacer * 10)
+  ),
+  $spacers
+);
+
+$space-no: 0;
+$space-sm: ($spacer * .5);
+$space-md: ($spacer);
+$space-lg: ($spacer * 2);
+$space-xl: ($spacer * 3);
+$space-xxl: ($spacer * 4);
+$space-xxxl: ($spacer * 5);
+$space-10xl: ($spacer * 10);

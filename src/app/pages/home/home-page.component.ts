@@ -36,15 +36,13 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("LOADING");
     this.dataSource = this.store.select(getPosts);
     this.store.dispatch({type: LIST_POST_ACTION});
   }
 
   openDialog(dialogType: string, element?: PostInterface): void {
       let component;
-      let options: MatDialogConfig = {
-        width: '100%', 
+      let options: MatDialogConfig = { 
         autoFocus: false, 
         restoreFocus: false
       };
@@ -53,6 +51,7 @@ export class HomePageComponent implements OnInit {
         case 'add':
           component = AddDialogComponent; 
           options = Object.assign(options, {
+            width: '100%',
             data: {
               editable: false,
               post: null
@@ -62,15 +61,17 @@ export class HomePageComponent implements OnInit {
         case 'view':
           component = ViewDialogComponent; 
           options = Object.assign(options, {
+            width: '100%',
             data: {
               editable: false,
-              post: null
+              post: element
             }
           });
           break;
         case 'update':
           component = UpdateDialogComponent;
           options = Object.assign(options, {
+            width: '100%',
             data: {
               editable: true,
               post: element
@@ -80,6 +81,9 @@ export class HomePageComponent implements OnInit {
         case 'delete':
           component = DeleteDialogComponent;
           options = Object.assign(options, {
+            width: '150px',
+            height: '150px',
+            panelClass: 'dialog-delete',
             data: {
               editable: false,
               post: element
@@ -88,11 +92,7 @@ export class HomePageComponent implements OnInit {
           break;
       }
   
-      const dialogRef = this.dialog.open(component, options);
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
+      this.dialog.open(component, options);
   }
 
 }

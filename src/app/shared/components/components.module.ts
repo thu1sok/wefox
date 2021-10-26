@@ -11,6 +11,7 @@ import { UpdateDialogComponent } from './dialogs/update/update-dialog.component'
 import { HeaderComponent } from './header/header.component';
 import { ViewDialogComponent } from './dialogs/view/view-dialog.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import { PostFormComponent } from './post-form/post-form.component';
     ViewDialogComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     BrowserModule,
     DragDropModule,
-    MaterialModule    
+    MaterialModule
   ],
   exports: [
     AddDialogComponent,

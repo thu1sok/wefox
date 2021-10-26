@@ -19,6 +19,6 @@ export class AddDialogComponent implements OnInit {
   }
 
   addPost(post: PostInterface) {
-    this.store.dispatch({type: ADD_POST_ACTION, post: post});
+    this.store.dispatch({type: ADD_POST_ACTION, post: {post}});
   }
 }

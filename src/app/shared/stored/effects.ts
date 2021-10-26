@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
+import { map, mergeMap, catchError, exhaustMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 // Actions
@@ -24,7 +24,13 @@ export class PostEffects {
       ofType(AddPost),
       exhaustMap(action =>
         this.postService.addPost(action.post).pipe(
-          map((response: any) => AddPostSuccess({ ...response })),
+          map(
+            (post: any) => AddPostSuccess({ ...post })
+          ),
+          tap({
+            complete: () => this.postService.showMessage('Post added successfully'),
+            error: () => this.postService.showMessage('Error adding post')
+          }),
           catchError((error: any) => of(PostError(error))))
       )
     )
@@ -37,8 +43,8 @@ export class PostEffects {
       mergeMap(() => { return this.postService.loadPost().pipe(
           map((post: PostInterface[]) => {
             return ListPostSuccess({ post:  post });
-          },
-          catchError((error: any) => of(PostError(error))))
+          }),
+          catchError((error: any) => of(PostError(error)))
       )})
     )
   });
@@ -49,8 +55,12 @@ export class PostEffects {
       mergeMap((action) => { return this.postService.deletePost(action.id).pipe(
           map((post) => {
             return DeletePostSuccess({ id: action.id, post: post });
-          },
-          catchError((error: any) => of(PostError(error))))
+          }),
+          tap({
+            complete: () => this.postService.showMessage('Post deleted successfully'),
+            error: () => this.postService.showMessage('Error deleting post')
+          }),
+          catchError((error: any) => of(PostError(error)))
       )})
     )
   });
@@ -61,8 +71,12 @@ export class PostEffects {
       mergeMap((action) => { return this.postService.updatePost(action.id, action.post).pipe(
           map((post: PostInterface[]) => {
             return UpdatePostSuccess({ id: action.id, post: post });
-          },
-          catchError((error: any) => of(PostError(error))))
+          }),
+          tap({
+            complete: () => this.postService.showMessage('Post updated successfully'),
+            error: () => this.postService.showMessage('Error updating post')
+          }),
+          catchError((error: any) => of(PostError(error)))
       )})
     )
   });

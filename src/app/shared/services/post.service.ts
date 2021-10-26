@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 
 // Constant
@@ -13,7 +14,8 @@ export class PostService {
   private API_CALLS = API_CALLS;
 
   constructor(
-    private apiCall: ApiService
+    private apiCall: ApiService,
+    private snackBarService: MatSnackBar
   ) {}
 
   addPost<T>(post: PostInterface): Observable<T> {
@@ -32,6 +34,12 @@ export class PostService {
   updatePost<T>(id: string, post: PostInterface): Observable<PostInterface[]> {
     const updateUrl = this.API_CALLS.update.replace('{$id}', id);
     return this.apiCall.put(updateUrl, post);
+  }
+
+  showMessage(message: string) : void {
+    let config = new MatSnackBarConfig();
+    config.duration = 3000;
+    this.snackBarService.open(message, null, config);
   }
 
 }

@@ -2,9 +2,9 @@ export interface PostInterface {
     id?: number;
     title: string;
     content: string;
-    createdAt?: string;
-    updatedAt?: string;
+    created_at?: string;
+    updated_at?: string;
     lat?: number;
     long?: number;
-    imageUrl?: string;
+    image_url?: string;
 }

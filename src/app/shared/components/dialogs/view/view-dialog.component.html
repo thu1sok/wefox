@@ -1,1 +1,24 @@
-view
+<mat-dialog-content>
+    <div class="view-dialog view-dialog__container">
+        <h2 class="view-dialog view-dialog__title">View Post</h2>
+        <img *ngIf="!imgErrorFlag; else imgError" [src]="data.post.image_url" class="view-dialog view-dialog__img" (error)="onErrorImg()" />
+        <ng-template #imgError>
+            <img [src]="defaultFlagUrl" class="view-dialog view-dialog__img view-dialog__img--error" (error)="onErrorImg()" />
+        </ng-template>
+        <h3 class="view-dialog view-dialog__subtitle">{{data.post.title}}</h3>
+        <h4 class="view-dialog view-dialog__header">Description:</h4>
+        <p class="view-dialog view-dialog__content">{{data.post.content}}</p>
+        <h4>Edit information:</h4>
+        <p>Created at: {{data.post.created_at | date: 'd/M/yy, h:mm a'}} , Last edit: {{data.post.updated_at | date: 'd/M/yy, h:mm a'}} </p>
+        <!-- <div *ngIf="data.post.lat && data.post.long"> -->
+            <div class="map-container">
+                <div class="map-frame">
+                  <div id="map"></div>
+                </div>
+              </div>
+        <!-- </div> -->
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="right">
+    <button mat-button mat-dialog-close>OK!</button>
+</mat-dialog-actions>

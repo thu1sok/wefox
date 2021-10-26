@@ -10,25 +10,30 @@ import { DeleteDialogComponent } from './dialogs/delete/delete-dialog.component'
 import { UpdateDialogComponent } from './dialogs/update/update-dialog.component';
 import { HeaderComponent } from './header/header.component';
 import { ViewDialogComponent } from './dialogs/view/view-dialog.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AddDialogComponent,
     DeleteDialogComponent,
     HeaderComponent,
+    PostFormComponent,
     UpdateDialogComponent,
     ViewDialogComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     BrowserModule,
     DragDropModule,
-    MaterialModule    
+    MaterialModule
   ],
   exports: [
     AddDialogComponent,
     DeleteDialogComponent,
     HeaderComponent,
+    PostFormComponent,
     UpdateDialogComponent,
     ViewDialogComponent
   ],

@@ -1,0 +1,28 @@
+.view-dialog {
+    &__img {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+        margin: 0 auto;
+        display: block;
+        &--error {
+            max-width: 200px;
+        }
+    }
+
+    &__subtitle {
+        text-align: center;
+    }
+}
+.map-container {
+    height: 250px;
+}
+
+.map-frame {
+    border: 1px solid black;
+    height: 100%;
+}
+
+#map {
+    height: 100%;
+}

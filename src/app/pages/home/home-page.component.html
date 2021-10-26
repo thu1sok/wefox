@@ -1,5 +1,8 @@
 <div class="home-page home-page__wrapper p-lg">
-
+    <button mat-raised-button color="primary" (click)="openDialog('add')">
+        <mat-icon class="m-md--r">note_add</mat-icon>
+        <span>Add new Post</span>
+    </button>
     <table mat-table [dataSource]="dataSource" class="home-page home-page__table">
         <ng-container matColumnDef="Title">
             <th mat-header-cell *matHeaderCellDef> Title </th>

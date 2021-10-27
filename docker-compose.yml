@@ -1,0 +1,20 @@
+version: '3.0'
+
+services:
+  web:    
+    image: sokthu1/wefox-web
+    ports:
+      - "8080:80"
+    networks:
+      - wefoxred
+    depends_on:
+      - api
+  api:
+    image: wefoxgroup/wg-web-challenge
+    ports:
+      - "3050:3000"
+    networks:
+      - wefoxred
+networks:
+  wefoxred:
+    driver: bridge
